@@ -1,0 +1,19 @@
+Pupillary Distance Analyzer
+
+This is the result of a couple days of attempting to solve an old optical industry problem: get a person's interpupillary distance without any mechanical aide.
+
+The goal was to have the only requirement of the person be that they stand still for a picture and face the camera as directly as possible. However, if you know much about the human eye, you know already that this does not have a happy ending.
+
+Despite utilizing the OpenCV v2.1 library for C++, there were just too many unknowns for this to work. The entire algorithm was based on the so-called "fact" that the average person's iris is somewhere around 11.8mm, a fact told to me by my boss. Only later did I find out that this vital piece of information was extrapolated from a circa 2004 study that barely had enough samples to constitute a significant sample size in its own little suburb.
+
+Combine this with the fact that a person's iris size also changes based on if they are focusing near or far (aka "infinity"), the margin of error going from pixels to millimeters was incredibly ridiculous if the person wasn't at the "sweet spot" distance from the camera, and camera itself had to be constantly calibrated to compensate for lens variations and whatnot, it was basically trying to solve a system of equations that had about 20 or so unknowns with one constant and that one constant was the sort of constant Bowser might give you in the middle of a round of Mario Party.
+
+Eventualy this got outsourced to a man named Larry Kite, a PhD computer science graduate from USC specializing in computer vision and AI. Not only that, but he is given the "out" that measurements may be grounded by a physical object, i.e. the person must hold up something like a checkerboard pattern or something against their face so the program has something to compare distances against.
+
+Dr. Kite is a very smart fellow, but I feel that had I been given the chance to use something like this comparative measurement technique, this project would have given me much less trouble. As it stands, though, if the program is able to detect a person's eyes (which is dependent on the image quality and the fact that I'm using a supplied Haar cascade file with OpenCV), the success rate is somewhere around 60%. Not bad for my first attempt at computer vision problem solving.
+
+The code is a mess, but since I wrote it all in the span of two days with little intention of it ever going past a folder on my desktop, I'd say it's amazing there are event comments in there.
+
+Dr. Larry Kite - http://www.linkedin.com/in/lawrencekite/
+OpenCV - http://opencv.willowgarage.com/wiki/
+L. Maisonobe's paper on finding the best circle that fits a set of points - http://www.spaceroots.org/documents/circle/circle-fitting.pdf
