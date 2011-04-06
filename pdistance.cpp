@@ -275,7 +275,7 @@ int main(int argc, const char** argv){
 		cvReleaseImage(&img);
 	}
 	else {
-		cout << "Error: must include image filename as commandline argument" << endl;
+		cout << "Error: must include image filename as command line argument" << endl;
 	}
 	return 0;
 }
